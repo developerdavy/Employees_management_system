@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>Dashboard</h2>
+                <img src="../../uploads/<%= user.profile %>" alt="">
+            </div>
+            <ul class="menu-list">
+                <!-- <li><a href="#profile">Profile</a></li>
+                <li><a href="#settings">Settings</a></li>
+                <li><a href="#activity">Activity</a></li> -->
+                <form action="employees/logout" method="post">
+                    <li><a href="/employees/logout">Logout</a></li>
+                </form>
+                
+            </ul>
+        </nav>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header>
+                <button id="menuToggle" class="menu-toggle">&#9776;</button>
+                <h1>Welcome, <%= user.fname %> <%= user.lname %>!</h1>
+                <p>Your personal dashboard</p>
+            </header>
+
+            <section id="profile" class="section">
+                <h2>Profile Information</h2>
+                <ul class="profile-list">
+                    <li><strong>Email:</strong> <%= user.email %></li>
+                    <li><strong>First Name:</strong> <%= user.fname %></li>
+                    <li><strong>Last Name:</strong> <%= user.lname %></li>
+                    <li><strong>Age:</strong> <%= user.age %></li>
+                    <li><strong>Status:</strong> <%= user.status %></li>
+                    <li><strong>Blood Group:</strong> <%= user.bg %></li>
+                    <li><strong>Address:</strong> <%= user.address %></li>
+                    <li><strong>Category:</strong> <%= user.category %></li>
+                </ul>
+            </section>
+
+            <section id="settings" class="section">
+                <h2>Settings</h2>
+                <p>Here you can manage your account settings.</p>
+            </section>
+
+            <section id="activity" class="section">
+                <h2>Recent Activity</h2>
+                <p>View your recent actions and activities.</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+    <div class="signup-container">
+        <h2>Admin Signup</h2>
+        
+        <% if (errorMessage) { %>
+            <p class="error-message"><%= errorMessage %></p>
+        <% } %>
+
+        <% if(success) { %>
+            <p class="success-message"><%= success %></p>
+           <% } %>
+
+        <form action="/employees/signup" method="POST" enctype="multipart/form-data">
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Age</label>
+                <input type="number" id="age" name="age" required>
+            </div>
+
+            <div class="form-group">
+                <label for="status">Status</label>
+                <input type="text" id="status" name="status" required>
+            </div>
+
+            <div class="form-group">
+                <label for="gender">Gender</label><br>
+                <label for="male">Male</label>
+                <input type="radio" id="male" name="gender" value="male" required><br>
+
+                <label for="female">Female</label>
+                <input type="radio" id="female" name="gender" value="female" required><br>
+
+                <label for="other">Other</label>
+                <input type="radio" id="other" name="gender" value="other" required><br>
+            </div>
+
+            <div class="form-group">
+                <label for="firstname">First Name</label>
+                <input type="text" id="firstname" name="fname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname">Last Name</label>
+                <input type="text" id="lastname" name="lname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="bg">Blood Group</label>
+                <input type="text" id="bg" name="bg">
+            </div>
+
+            <div class="form-group">
+                <label for="profile">Profile</label>
+                <input type="file" id="profile" name="profile">
+            </div>
+
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" name="address">
+            </div>
+
+            <div class="form-group">
+                <label for="category">Category</label>
+                <input type="text" id="category" name="category">
+            </div>
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>

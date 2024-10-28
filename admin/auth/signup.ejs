@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+    <link rel="stylesheet" href="/assets/css/signup.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup-form" action="/employees/admin/signup" method="post" enctype="multipart/form-data">
+
+            <% if (error) { %>
+               <p id="error-message"><%= error %></p>
+            <% } %>
+
+            <% if (success) { %>
+               <p id="success-message"><%= success %></p>
+            <% } %>
+          
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password"><br><br>
+            <label for="confirm-password">Confirm-Password:</label>
+            <input type="password" id="confirm-password" name="confirmpassword"><br><br>
+            <label for="profile">Profile:</label>
+            <input type="file" id="profile" name="profile"><br><br>
+            <input type="submit" value="Sign Up">
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

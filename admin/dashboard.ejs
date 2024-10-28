@@ -1,0 +1,178 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Admin Dashboard
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+ </head>
+ <body class="bg-gray-100">
+  <div class="bg-purple-800 p-4 flex justify-between items-center">
+   <div class="text-white text-3xl font-bold">
+    EMS
+   </div>
+   <div class="flex items-center space-x-4">
+    <input class="px-4 py-2 rounded-full focus:outline-none" placeholder="Search here" type="text"/>
+    <i class="fas fa-briefcase text-white">
+    </i>
+    <img alt="User profile picture" class="rounded-full" height="40" src="/uploads/<%= admin.profile %>" width="40"/>
+   </div>
+  </div>
+  <div class="p-4">
+   <div class="bg-white p-4 rounded-lg shadow-md mb-4">
+    <div class="text-gray-600">
+     Home / Dashboard
+    </div>
+    <div class="text-xl font-bold">
+     Admin Dashboard
+    </div>
+   </div>
+   <div class="flex space-x-4 mb-4">
+    <button class="bg-yellow-500 text-white px-4 py-2 rounded-lg">
+     Admin Dashboard
+    </button>
+    <button class="bg-white text-gray-700 px-4 py-2 rounded-lg">
+     Employees Dashboard
+    </button>
+    <a href="/employees/admin/view/employees">
+        <button class="bg-white text-gray-700 px-4 py-2 rounded-lg">
+        View Employees
+        </button></a>
+    <a href="/employees/admin/view/admins">
+        <button class="bg-white text-gray-700 px-4 py-2 rounded-lg">
+            View Admins
+            </button>
+    </a>
+    
+   
+   </div>
+   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-4">
+    <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+     <img alt="Admin profile picture" class="rounded-full mr-4" height="80" src="/uploads/<%= admin.profile %>" width="80"/>
+     <div>
+      <div class="text-gray-600">
+       Welcome <%= admin.email %>
+
+       <% if (success) { %>
+        <p id="success-message"><%= success %></p>
+     <% } %>
+      </div>
+      <div class="text-gray-400">
+       Sun, 29 Nov 2019
+      </div>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+     <div class="bg-purple-800 text-white p-4 rounded-full mr-4">
+      <i class="fas fa-users">
+      </i>
+     </div>
+     <div>
+      <div class="text-gray-600">
+       Employees
+      </div>
+      <div class="text-2xl font-bold">
+      <%= employeecount %>
+      </div>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+     <div class="bg-yellow-500 text-white p-4 rounded-full mr-4">
+      <i class="fas fa-building">
+      </i>
+     </div>
+     <div>
+      <div class="text-gray-600">
+       Admins
+      </div>
+      <div class="text-2xl font-bold">
+       <%= adminCount %>
+      </div>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+     <div class="bg-red-500 text-white p-4 rounded-full mr-4">
+      <i class="fas fa-suitcase">
+      </i>
+     </div>
+     <div>
+      <div class="text-gray-600">
+       Leaves
+      </div>
+      <div class="text-2xl font-bold">
+       3
+      </div>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md flex items-center">
+     <div class="bg-green-500 text-white p-4 rounded-full mr-4">
+      <i class="fas fa-dollar-sign">
+      </i>
+     </div>
+     <div>
+      <div class="text-gray-600">
+       Salary
+      </div>
+      <div class="text-2xl font-bold">
+       $5.8M
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+    <div class="bg-white p-4 rounded-lg shadow-md">
+     <div class="text-gray-600 mb-2">
+      Total Employees
+     </div>
+     <img alt="Pie chart showing total employees" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-BVbpSZmLndA7MfHIxv2ahIKS/user-IBY8IaMXtVn7IVIdZeyvjx16/img-MV0pZ3I3iU7XiuP7utaLlvcp.png?st=2024-09-18T08%3A26%3A17Z&amp;se=2024-09-18T10%3A26%3A17Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-17T23%3A43%3A57Z&amp;ske=2024-09-18T23%3A43%3A57Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=iUZUQ%2BGQhovvKDD7jCy/g2sXpA/SnqyUtCqmAVQ8PwY%3D" width="300"/>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+     <div class="text-gray-600 mb-2">
+      Total Salary By Unit
+     </div>
+     <img alt="Line chart showing total salary by unit" height="200" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-BVbpSZmLndA7MfHIxv2ahIKS/user-IBY8IaMXtVn7IVIdZeyvjx16/img-buFZVDHKzw36hAtHvtTA7LBS.png?st=2024-09-18T08%3A26%3A18Z&amp;se=2024-09-18T10%3A26%3A18Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-17T11%3A00%3A40Z&amp;ske=2024-09-18T11%3A00%3A40Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=avXJJY41s7mAnroK2zW%2BWfPgaQ0MAw3XsCoTK2OMmJY%3D" width="300"/>
+    </div>
+   </div>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+    <div class="bg-white p-4 rounded-lg shadow-md">
+     <div class="text-gray-600 mb-2">
+      Today
+     </div>
+     <div class="flex items-center">
+      <i class="fas fa-sync-alt text-gray-400 mr-2">
+      </i>
+      <div class="text-gray-600">
+       No new updates
+      </div>
+     </div>
+    </div>
+    <div class="bg-white p-4 rounded-lg shadow-md">
+     <div class="flex justify-between items-center mb-2">
+      <div class="text-gray-600">
+       Team Leads
+      </div>
+      <a class="text-purple-800" href="#">
+       Manage Team
+      </a>
+     </div>
+     <div class="flex items-center">
+      <i class="fas fa-users text-gray-400 mr-2">
+      </i>
+      <div class="text-gray-600">
+       No team leads assigned
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </body>
+</html>

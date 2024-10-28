@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admins List</title>
+    <link rel="stylesheet" href="/assets/css/employees.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Admins</h1>
+
+        <% if (error) { %>
+           <p class="error-message" style="text-align: center;"><%= error %></p>
+        <% } %>
+
+        <% if (success) { %>
+            <p class="success-message"><%= success %></p>
+         <% } %>
+        
+        <!-- Search Form -->
+        <form action="/employees/admin/view/admins" method="GET">
+            <input type="text" name="search" placeholder="Search by name or email" value="<%= searchQuery %>">
+            <button type="submit">Search</button>
+        </form>
+        <div class="btns">
+            <a href="/employees/admin/dashboard"><button class="back-btn" id="btn">Back</button></a>
+            <a href="/employees/admin/view/admins"><button class="add-btn" id="btn">Refresh</button></a>
+        </div>
+        
+        <!-- Employee Table -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Profile</th>
+                    <th>ID</th>
+                    <th>Email</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (admin.length > 0) { %>
+                    <% admin.forEach(admin => { %>
+                        <tr>
+                            <td>
+                                <img src="/uploads/<%= admin.profile %>" alt="" width="70px" height="70px" style="border-radius: 50%;">
+                            </td>
+                            <td><%= admin.ID %></td>
+                            <td><%= admin.email %></td>
+                            <td style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                               <a href="/employees/admin/edit/employee/"><button class="edit-btn" type="submit">Edit</button></a>
+                               <form action="/employees/admin/delete/employee/" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                <button class="delete-btn"  type="submit">Delete</button>
+                            </form>
+                            
+                            </td>
+
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="8">No employees found</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

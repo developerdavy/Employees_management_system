@@ -1,0 +1,32 @@
+<!-- edit_employee.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Employee</title>
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Edit Employee</h2>
+        <form action="/admin/edit/employee/<%= employee.Id %>" method="POST" enctype="multipart/form-data">
+            <label for="fname">First Name</label>
+            <input type="text" name="fname" value="<%= employee.F_name %>" required>
+
+            <label for="lname">Last Name</label>
+            <input type="text" name="lname" value="<%= employee.L_name %>" required>
+
+            <label for="email">Email</label>
+            <input type="email" name="email" value="<%= employee.email %>" required>
+
+            <label for="age">Age</label>
+            <input type="number" name="age" value="<%= employee.age %>" required>
+
+            <label for="gender">Gender</label>
+            <select name="gender" required>
+                <option value="male" <%= employee.gender === 'male' ? 'selected' : '' %>>Male</option>
+                <option value="female" <%= employee.gender === 'female' ? 'selected' : '' %>>Female</option>
+            </select>
+
+            <lab

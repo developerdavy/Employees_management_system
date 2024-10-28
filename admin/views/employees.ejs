@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+    <link rel="stylesheet" href="/assets/css/employees.css">
+</head>
+<body>
+    <div class="container">
+        <h1>All Employees</h1>
+
+        <% if (error) { %>
+           <p class="error-message" style="text-align: center;"><%= error %></p>
+        <% } %>
+
+        <% if (success) { %>
+            <p class="error-message"><%= success %></p>
+         <% } %>
+        
+        <!-- Search Form -->
+        <form action="/employees/admin/view/employees" method="GET">
+            <input type="text" name="search" placeholder="Search by name or email" value="<%= searchQuery %>">
+            <button type="submit">Search</button>
+        </form>
+        <div class="btns">
+            <a href="/employees/admin/dashboard"><button class="back-btn" id="btn">Back</button></a>
+            <a href="/employees/admin/add/employee"><button class="add-btn" id="btn">Add</button></a>
+            <a href="/employees/admin/view/employees"><button class="add-btn" id="btn">Refresh</button></a>
+        </div>
+        
+        <!-- Employee Table -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Profile</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Age</th>
+                    <th>Status</th>
+                    <th>Blood Group</th>
+                    <th>Address</th>
+                    <th>Category</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (employees.length > 0) { %>
+                    <% employees.forEach(employee => { %>
+                        <tr>
+                            <td>
+                               <img src="/uploads/<%= employee.profile %>" style="border-radius: 50%; width: 70px; height: 70px;" alt="profile picture"> 
+                            </td>
+                            <td><%= employee.F_Name %></td>
+                            <td><%= employee.L_Name %></td>
+                            <td><%= employee.email %></td>
+                            <td><%= employee.age %></td>
+                            <td><%= employee.status %></td>
+                            <td><%= employee.bg %></td>
+                            <td><%= employee.address %></td>
+                            <td><%= employee.category %></td>
+                            <td style="display: flex; flex-direction: row; justify-content: space-between;">
+                               <a href="/employees/admin/edit/employee/<%= employee.ID %>"><button class="edit-btn" type="submit">Edit</button></a>
+                               <form action="/employees/admin/delete/employee/<%= employee.ID %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this employee?');">
+                                <button class="delete-btn" type="submit">Delete</button>
+                            </form>
+                            
+                                    
+                                   
+
+                            </td>
+                        </tr>
+                    <% }) %>
+                <% } else { %>
+                    <tr>
+                        <td colspan="8">No employees found</td>
+                    </tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
